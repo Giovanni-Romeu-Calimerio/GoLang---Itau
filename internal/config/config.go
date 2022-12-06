@@ -1,14 +1,16 @@
 package config
 
 import (
+	// Package "os" - usado para manipulação de arquivos
+	// Package "strconv" - implementa conversões de tipos primitivos, ex: String para int
 	"os"
 	"strconv"
 )
 
 const (
-	// DEVELOPER - Modo de desenvolvimento
-	// HOMOLOGATION - Modo de homologação
-	// PRODUCTION - Modo de produção
+	// DEVELOPER - Modo de desenvolvimento - Ambiente programável
+	// HOMOLOGATION - Modo de homologação - Fase de testes
+	// PRODUCTION - Modo de produção - Usuário final
 	DEVELOPER    = "developer"
 	HOMOLOGATION = "homologation"
 	PRODUCTION   = "production"

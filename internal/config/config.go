@@ -100,7 +100,7 @@ func defaultConf() *Config {
 		OpenBrowser: true,
 		DBConfig: DBConfig{
 			DB_DRIVE: "sqlite3",
-			DB_NAME:  "db.sqlite3",
+			DB_NAME:  "dbGolang.db",
 		},
 		Mode: PRODUCTION,
 	}

@@ -5,17 +5,16 @@ import (
 	"strconv"
 )
 
-//teste3
-// teste 4
-//teste
-//testeeeeee
-
 const (
+	// DEVELOPER - Modo de desenvolvimento
+	// HOMOLOGATION - Modo de homologação
+	// PRODUCTION - Modo de produção
 	DEVELOPER    = "developer"
 	HOMOLOGATION = "homologation"
 	PRODUCTION   = "production"
 )
 
+// Config - Configurações do servidor
 type Config struct {
 	SRV_PORT    string `json:"srv_port"`
 	WEB_UI      bool   `json:"web_ui"`
@@ -24,6 +23,7 @@ type Config struct {
 	DBConfig    `json:"dbconfig"`
 }
 
+// DBConfig - Configurações do banco de dados
 type DBConfig struct {
 	DB_DRIVE string `json:"db_drive"`
 	DB_HOST  string `json:"db_host"`
@@ -34,6 +34,7 @@ type DBConfig struct {
 	DB_DSN   string `json:"-"`
 }
 
+// NewConfig - Cria uma nova configuração
 func NewConfig(confi *Config) *Config {
 	var conf *Config
 
@@ -91,6 +92,7 @@ func NewConfig(confi *Config) *Config {
 	return conf
 }
 
+// defaultConf - Configurações padrão
 func defaultConf() *Config {
 	default_conf := Config{
 		SRV_PORT:    "8080",

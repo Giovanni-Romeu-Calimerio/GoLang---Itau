@@ -3,6 +3,7 @@ package database
 import (
 	"database/sql"
 	"fmt"
+	"internal/pkg/entity"
 	"log"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -16,18 +17,9 @@ func exec(db *sql.DB, sql string) sql.Result {
 	return result
 }
 
-type product struct {
-	id    int
-	name  string
-	code  int
-	price float64
-	datac string
-	datau string
-}
+func conect() {
 
-func conectdb() {
-
-	db, err := sql.Open("sqlite3", "C:\\Users\\heder\\go\\src\\github.com\\GoLangCurso\\pkg\\database\\dbGolang.db")
+	db, err := sql.Open("sqlite3", "C:\\Users\\heder\\go\\src\\github.com\\GoLangCurso-1\\pkg\\database\\dbGolang.db")
 	defer db.Close()
 
 	if err != nil {
@@ -39,12 +31,11 @@ func conectdb() {
 		log.Fatal(err)
 	}
 
-	//exec(db, `insert into products (name, code, price, datac, datau) values ( "Case", 1016, 10.7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
-	exec(db, "SELECT * from produtcs")
-	rows, _ := db.Query("SELECT id, name, code, price, datau FROM products ")
+	//exec(db, `insert into products (Name, Code, Price, CreatedAt, UpdatedAt) values ( "Mala", 1017, 100.7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
+	rows, _ := db.Query("SELECT ID, Name, Code, Price, UpdatedAt FROM products ")
 	for rows.Next() {
-		var p product
-		rows.Scan(&p.id, &p.name, &p.code, &p.price, &p.datau)
+		var p entity.Produto
+		rows.Scan(&p.ID, &p.Name, &p.Code, &p.Price, &p.UpdatedAt)
 		fmt.Println(p)
 	}
 

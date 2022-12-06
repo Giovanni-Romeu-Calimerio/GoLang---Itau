@@ -1,4 +1,4 @@
-package main
+package database
 
 import (
 	"database/sql"
@@ -25,9 +25,9 @@ type product struct {
 	datau string
 }
 
-func main() {
+func conectdb() {
 
-	db, err := sql.Open("sqlite3", "C:\\Users\\heder\\go\\src\\github.com\\GoLangCurso\\cmd\\dbGolang.db")
+	db, err := sql.Open("sqlite3", "C:\\Users\\heder\\go\\src\\github.com\\GoLangCurso\\pkg\\database\\dbGolang.db")
 	defer db.Close()
 
 	if err != nil {
@@ -40,7 +40,7 @@ func main() {
 	}
 
 	//exec(db, `insert into products (name, code, price, datac, datau) values ( "Case", 1016, 10.7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`)
-
+	exec(db, "SELECT * from produtcs")
 	rows, _ := db.Query("SELECT id, name, code, price, datau FROM products ")
 	for rows.Next() {
 		var p product
